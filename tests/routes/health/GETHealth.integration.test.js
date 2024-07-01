@@ -19,13 +19,13 @@ describe('GET /health', () => {
 
 describe('consulta GET /api/cities/by_country/:country', () => {
     test('Debería devolver un arreglo de ciudades al ingresar un parámetro válido', async () => {
-        const response = await request(app.callback()).get('/api/cities/by_country/Spain')
+        const response = await request(app.callback()).get('/api/cities/by_country/Chile')
         expect(response.status).toBe(200)
         expect(Array.isArray(response.body)).toBe(true)
     })
     
     test('Debería devolver un arreglo vacío de ciudades al ingresar un parámetro válido pero no existente', async () => {
-        const response = await request(app.callback()).get('/api/cities/by_country/NonExistentCountry')
+        const response = await request(app.callback()).get('/api/cities/by_country/Tel335Landia')
         expect(response.status).toBe(200)
         expect(response.body).toEqual({ message: 'No se encontraron ciudades para el país ingresado' })
     })
